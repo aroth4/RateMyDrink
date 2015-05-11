@@ -1053,6 +1053,7 @@ public class DerbyDatabase implements IDatabase {
             public Drink execute(Connection conn) throws SQLException {
                 PreparedStatement stmt = null;
                 PreparedStatement stmt2 = null;
+
                 ResultSet resultSet = null;
                 
                 try{
@@ -1063,6 +1064,8 @@ public class DerbyDatabase implements IDatabase {
                     Drink newDrink = new Drink();
                     loadDrink(newDrink, resultSet, 1);
 
+                    int numRatings = newDrink.getNumRatings();
+                    float newRating = newDrink.getRating();
 
                     return newDrink;
                 }finally{
@@ -1105,6 +1108,7 @@ public class DerbyDatabase implements IDatabase {
                     return true;
                 } finally {
                     //DBUtil.closeQuietly(stmt);
+                    DBUtil.closeQuietly(stmt2);
                 }
             }
         });
