@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -68,12 +69,12 @@ public class DrinkListActivity extends ActionBarActivity implements DrinkListFra
         }
 
         // TODO: If exposing deep links into your app, handle intents here.
-       // navTitles = getResources().getStringArray(R.array.navItems);
-       // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-       // mDrawerList = (ListView) findViewById(R.id.left_drawer);
+       navTitles = getResources().getStringArray(R.array.navItems);
+       mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+       mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-       // mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.drawer_list_item, navTitles));
-       // mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+       mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.drawer_list_item, navTitles));
+       mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 
 //        mDrawerToggle = new ActionBarDrawerToggle(
@@ -98,7 +99,9 @@ public class DrinkListActivity extends ActionBarActivity implements DrinkListFra
 //        };
 
         // Set the drawer toggle as the DrawerListener
-        //mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerList.setItemChecked(4, true);
+        setTitle(navTitles[4]);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     /**

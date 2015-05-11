@@ -78,10 +78,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/notMember"
         android:id="@+id/notMember"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="39dp"
         android:layout_below="@+id/submitLogin"
-        android:layout_alignRight="@+id/password_field"
-        android:layout_alignEnd="@+id/password_field"
         android:layout_centerHorizontal="true" />
 
     <Button
