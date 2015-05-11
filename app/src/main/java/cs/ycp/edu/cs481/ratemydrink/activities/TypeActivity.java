@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import cs.ycp.edu.cs481.ratemydrink.R;
+import cs.ycp.edu.cs481.ratemydrink.fragements.BeerDetailFragment;
 import cs.ycp.edu.cs481.ratemydrink.fragements.DrinkListFragment;
 import cs.ycp.edu.cs481.ratemydrink.fragements.TypeListFragment;
 
@@ -137,6 +138,8 @@ public class TypeActivity extends ActionBarActivity implements TypeListFragment.
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, DrinkListActivity.class);
+            detailIntent.putExtra(BeerDetailFragment.ARG_ITEM_ID, id);
+            DrinkListFragment.DRINK_TYPE_ID = Integer.parseInt(id);
             startActivity(detailIntent);
         }
     }
@@ -171,11 +174,14 @@ public class TypeActivity extends ActionBarActivity implements TypeListFragment.
         }
         //Main menu screen, but you are already here
         if(position == 4) {
-            Toast.makeText(this, "You already are on the main menu", Toast.LENGTH_SHORT).show();
+            if(!this.getClass().equals(TypeActivity.class)){
+                Intent mainMenuIntent = new Intent(this, TypeActivity.class);
+                startActivity(mainMenuIntent);
+            }
         }
         //This would go to the profile page
         if(position == 5) {
-            if(TypeActivity.loginStatus == true) {
+            if(TypeActivity.loginStatus) {
                 Intent newProfile = new Intent(this, ProfileActivity.class);
                 startActivity(newProfile);
             }

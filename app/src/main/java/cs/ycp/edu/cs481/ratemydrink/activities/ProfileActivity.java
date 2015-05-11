@@ -1,26 +1,17 @@
 package cs.ycp.edu.cs481.ratemydrink.activities;
 
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import cs.ycp.edu.cs481.ratemydrink.R;
 import cs.ycp.edu.cs481.ratemydrink.TabListener;
-import cs.ycp.edu.cs481.ratemydrink.fragements.CommentsFragment;
 import cs.ycp.edu.cs481.ratemydrink.fragements.FavoritesFragment;
 import cs.ycp.edu.cs481.ratemydrink.fragements.ProfileFragment;
 
@@ -55,11 +46,11 @@ public class ProfileActivity extends ActionBarActivity {
                         this, "Favorites", FavoritesFragment.class));
         actionBar.addTab(tab2);
 
-        ActionBar.Tab tab3 = actionBar.newTab()
-                .setText(R.string.ProfileTab3)
-                .setTabListener(new TabListener<CommentsFragment>(
-                        this, "Comments", CommentsFragment.class));
-        actionBar.addTab(tab3);
+//        ActionBar.Tab tab3 = actionBar.newTab()
+//                .setText(R.string.ProfileTab3)
+//                .setTabListener(new TabListener<CommentsFragment>(
+//                        this, "Comments", CommentsFragment.class));
+//        actionBar.addTab(tab3);
 
 //        setContentView(R.layout.activity_profile);
 //        if (savedInstanceState == null) {
@@ -159,11 +150,11 @@ public class ProfileActivity extends ActionBarActivity {
     }
 
     //Click listener on drawer
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
-        }
-    }
+//    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+//        @Override
+//        public void onItemClick(AdapterView parent, View view, int position, long id) {
+//            selectItem(position);
+//        }
+//    }
 
 }

@@ -6,6 +6,7 @@ import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 /**
  * A simple interface using the Retrofit api to make RESTful requests register and login a user with the backend database
@@ -29,6 +30,6 @@ public interface IUserRequests {
      * @return User object containing the user's information
      */
     @GET("/backend/?action=getUser")
-    User login(@Body String password);
+    User login(@Query("username") String username, @Query("password") String password);
 
 }

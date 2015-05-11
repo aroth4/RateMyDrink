@@ -25,9 +25,9 @@ public class DummyContent {
 
     static {
         // Add 3 sample items.
-        addItem(new DummyItem("1", "Beer", "After a long day."));
-        addItem(new DummyItem("2", "Hard Liquor", "After a very long day."));
-        addItem(new DummyItem("3", "Mixed Drinks", "When you need to hold a party."));
+        addItem(new DummyItem("1", "Beer", ""));
+        addItem(new DummyItem("2", "Hard Liquor", ""));
+        addItem(new DummyItem("3", "Mixed Drinks", ""));
     }
 
     private static void addItem(DummyItem item) {

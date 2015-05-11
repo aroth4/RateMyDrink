@@ -17,7 +17,7 @@ public class Drink {
     protected int numRatings;
     protected DrinkType drinkType;
 
-    public static final int NUM_FIELDS = 4;
+    public static final int NUM_FIELDS = 6;
 
     protected ArrayList<Comment> comments;
 

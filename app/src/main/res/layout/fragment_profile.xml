@@ -31,17 +31,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="50dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/num_posted_drinks"
-                android:id="@+id/totalDrinksTitle"
-                android:layout_below="@+id/usernameTitle"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,23 +38,11 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/num_favorites"
                 android:id="@+id/totalFavsTitle"
-                android:layout_below="@+id/totalDrinksTitle"
+                android:layout_below="@+id/usernameTitle"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="25dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/num_comments"
-                android:id="@+id/totalCommentsTitle"
-                android:layout_below="@+id/totalFavsTitle"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,34 +59,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Sample 40"
-                android:id="@+id/totalDrinksField"
-                android:layout_above="@+id/totalFavsTitle"
-                android:layout_toRightOf="@+id/totalDrinksTitle"
-                android:layout_toEndOf="@+id/totalDrinksTitle"
-                android:layout_marginLeft="15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Sample 21"
                 android:id="@+id/totalFavoritesField"
-                android:layout_above="@+id/totalCommentsTitle"
-                android:layout_toRightOf="@+id/totalFavsTitle"
-                android:layout_toEndOf="@+id/totalFavsTitle"
-                android:layout_marginLeft="15dp" />
+                android:layout_alignTop="@+id/totalFavsTitle"
+                android:layout_alignRight="@+id/profileTitle"
+                android:layout_alignEnd="@+id/profileTitle" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Sample 2"
-                android:id="@+id/totalCommentsField"
-                android:layout_alignBottom="@+id/totalCommentsTitle"
-                android:layout_toRightOf="@+id/totalCommentsTitle"
-                android:layout_toEndOf="@+id/totalCommentsTitle"
-                android:layout_marginLeft="15dp" />
         </RelativeLayout>
     </FrameLayout>
 </ScrollView>

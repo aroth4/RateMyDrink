@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.rateMyDrink.modelClasses.Drink;
 
 import cs.ycp.edu.cs481.ratemydrink.R;
-import cs.ycp.edu.cs481.ratemydrink.dummy.DummyBeers;
 
 /**
  * An extended adapter so that the drink list can be populated with custom item views
@@ -39,20 +38,10 @@ public class DrinkListArrayAdapter<T> extends ArrayAdapter<T> {
 
         ImageView imageView = (ImageView)convertView.findViewById(R.id.image);
         TextView textView1 = (TextView)convertView.findViewById(R.id.textView1);
-        TextView textView2 = (TextView)convertView.findViewById(R.id.textView2);
-        TextView textView3 = (TextView)convertView.findViewById(R.id.beer_type);
-        TextView textView4 = (TextView)convertView.findViewById(R.id.beer_abv);
-        TextView textView5 = (TextView)convertView.findViewById(R.id.beer_cal);
-        TextView textView6 = (TextView)convertView.findViewById(R.id.beerAvgRate);
 
         Drink drink = (Drink)getItem(position);
 
         textView1.setText(drink.getDrinkName());
-        //textView2.setText(drink.getDescription());
-//        textView3.setText(drink.type);
-//        textView4.setText(drink.ABV);
-//        textView5.setText(Float.toString(drink.calories));
-//        textView6.setText(Float.toString(drink.rating));
 
         //imageView.setPadding(8, 8, 8, 8);
         //imageView.setImageResource(R.drawable.ic_launcher);

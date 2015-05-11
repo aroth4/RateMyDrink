@@ -9,12 +9,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import cs.ycp.edu.cs481.ratemydrink.R;
-import cs.ycp.edu.cs481.ratemydrink.fragements.DrinkDetailFragment;
+import cs.ycp.edu.cs481.ratemydrink.fragements.BeerDetailFragment;
 import cs.ycp.edu.cs481.ratemydrink.fragements.DrinkListFragment;
 
 
@@ -28,7 +27,7 @@ import cs.ycp.edu.cs481.ratemydrink.fragements.DrinkListFragment;
  * <p/>
  * The activity makes heavy use of fragments. The list of items is a
  * {@link cs.ycp.edu.cs481.ratemydrink.fragements.DrinkListFragment} and the item details
- * (if present) is a {@link cs.ycp.edu.cs481.ratemydrink.fragements.DrinkDetailFragment}.
+ * (if present) is a {@link BeerDetailFragment}.
  * <p/>
  * This activity also implements the required
  * {@link cs.ycp.edu.cs481.ratemydrink.fragements.DrinkListFragment.Callbacks} interface
@@ -113,8 +112,8 @@ public class DrinkListActivity extends ActionBarActivity implements DrinkListFra
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(DrinkDetailFragment.ARG_ITEM_ID, id);
-            DrinkDetailFragment fragment = new DrinkDetailFragment();
+            arguments.putString(BeerDetailFragment.ARG_ITEM_ID, id);
+            BeerDetailFragment fragment = new BeerDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.drink_detail_container, fragment)
@@ -124,7 +123,7 @@ public class DrinkListActivity extends ActionBarActivity implements DrinkListFra
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, DrinkDetailActivity.class);
-            detailIntent.putExtra(DrinkDetailFragment.ARG_ITEM_ID, id);
+            detailIntent.putExtra(BeerDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
     }

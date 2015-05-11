@@ -3,26 +3,19 @@ package cs.ycp.edu.cs481.ratemydrink.controllers.web_controllers;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.internal.bind.DateTypeAdapter;
-import com.rateMyDrink.modelClasses.Beer;
 import com.rateMyDrink.modelClasses.Drink;
-
-import java.util.List;
 
 import cs.ycp.edu.cs481.ratemydrink.RETROFIT;
 import cs.ycp.edu.cs481.ratemydrink.URLInfo;
-import cs.ycp.edu.cs481.ratemydrink.controllers.StringArrayAdapter;
 import retrofit.RestAdapter;
 
 /**
  * A controller to asynchronously make a GET request to the database for an array of Drink objects.
  */
-public class GetDrinkListAsync extends AsyncTask<Void, Void, Drink[]>{
+public class GetDrinkListAsync extends AsyncTask<Integer, Void, Drink[]>{
 
     @Override
-    protected Drink[] doInBackground(Void... params) {
+    protected Drink[] doInBackground(Integer... params) {
 
         IGetDrinksList getDrinkListService = RETROFIT.getRestAdapterBuilder()
                 .setEndpoint(URLInfo.DOMAIN_URL)
@@ -36,7 +29,14 @@ public class GetDrinkListAsync extends AsyncTask<Void, Void, Drink[]>{
                 .build()
                 .create(IGetDrinksList.class);
 
-        return getDrinkListService.getDrinkList();
+        if(params[0] == 1){
+            return getDrinkListService.getBeerList();
+        }else if(params[0] == 2){
+            return getDrinkListService.getLiquorList();
+        }else{
+            return getDrinkListService.getMixedDrinkList();
+        }
+
     }
 
 }

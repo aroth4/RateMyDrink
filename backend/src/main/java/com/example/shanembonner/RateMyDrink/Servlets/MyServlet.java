@@ -36,6 +36,7 @@ import controllers.DeleteUserList;
 import controllers.GetBeer;
 import controllers.GetBeerList;
 import controllers.GetComments;
+import controllers.GetDrink;
 import controllers.GetDrinkList;
 import controllers.GetFavoritesList;
 import controllers.GetLiquor;
@@ -171,7 +172,6 @@ public class MyServlet extends HttpServlet {
                 return;
             }
 
-
             Drink[] drinkArr = drinkList.toArray(new Drink[drinkList.size()]);
             setOkJsonDrinkHttpResponse(resp, "getting drink list", drinkArr);
         }
@@ -218,7 +218,6 @@ public class MyServlet extends HttpServlet {
                 return;
             }
 
-
             Drink[] drinkArr = liquorList.toArray(new Drink[liquorList.size()]);
             setOkJsonDrinkHttpResponse(resp, "getting liquor list", drinkArr);
 
@@ -226,10 +225,10 @@ public class MyServlet extends HttpServlet {
 
         if(action.equals("getMixedDrink")){
             System.out.println("action is getMixedDrink.");
-            if(pathInfo.startsWith("/")){
-                pathInfo = pathInfo.substring(1);
-            }
-            int id = Integer.parseInt(pathInfo, 10);
+//            if(pathInfo.startsWith("/")){
+//                pathInfo = pathInfo.substring(1);
+//            }
+            int id = Integer.parseInt(id_param, 10);
             MixedDrink mixedDrink = null;
 
             GetMixedDrink controller = new GetMixedDrink();
@@ -249,6 +248,27 @@ public class MyServlet extends HttpServlet {
             return;
         }
 
+        if(action.equals("getDrink")){
+            System.out.println("action is getDrink");
+
+            int id = Integer.parseInt(id_param, 10);
+            Drink drink = null;
+
+            GetDrink controller = new GetDrink();
+
+            try{
+                drink = controller.getDrink(id);
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+
+            if(drink == null){
+                setBadHttpResponse(resp, "No such rink", "text/plain", HttpServletResponse.SC_NOT_FOUND);
+            }
+
+            setOkJsonDrinkHttpResponse(resp, drink.getDrinkName() + " was found.", drink);
+        }
+
         if(action.equals("getMixedDrinkList")){
 
             GetMixedDrinkList getController = new GetMixedDrinkList();
@@ -261,7 +281,7 @@ public class MyServlet extends HttpServlet {
             }
 
 
-            if(mixedDrinkList == null){
+            if(mixedDrinkList == null) {
                 setBadHttpResponse(resp, "mixedDrinkList is null.", "text/plain", HttpServletResponse.SC_NOT_FOUND);
                 return;
             }
@@ -273,11 +293,12 @@ public class MyServlet extends HttpServlet {
 
         if(action.equals("getUser")){
             System.out.println("action is getUser.");
-            String password = JSON.getObjectMapper().readValue(req.getReader(), String.class);
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");//JSON.getObjectMapper().readValue(req.getReader(), String.class);
             User user = null;
             GetUser controller = new GetUser();
             try {
-                user = controller.getUser(pathInfo,password);
+                user = controller.getUser(username,password);
                 System.out.println("accessed database");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -587,7 +608,7 @@ public class MyServlet extends HttpServlet {
                 e.printStackTrace();
             }
             if(success){
-                setOkJsonDrinkHttpResponse(resp, "sucess updating drink rating", drink);
+                setOkJsonDrinkHttpResponse(resp, "success updating drink rating", drink);
                 return;
             }else{
                 setBadHttpResponse(resp, "failed to update drink rating", "text/plain", HttpServletResponse.SC_NOT_FOUND);

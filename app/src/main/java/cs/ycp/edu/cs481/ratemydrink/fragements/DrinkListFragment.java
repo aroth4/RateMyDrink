@@ -5,23 +5,27 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
+
 import com.rateMyDrink.modelClasses.Drink;
+
 import java.util.concurrent.ExecutionException;
+
 import cs.ycp.edu.cs481.ratemydrink.R;
 import cs.ycp.edu.cs481.ratemydrink.controllers.DrinkListArrayAdapter;
 import cs.ycp.edu.cs481.ratemydrink.controllers.web_controllers.GetDrinkListAsync;
-import static cs.ycp.edu.cs481.ratemydrink.dummy.DummyContent.ITEMS;
 
 /**
  * A list fragment representing a list of Drinks. This fragment
  * also supports tablet devices by allowing list items to be given an
  * 'activated' state upon selection. This helps indicate which item is
- * currently being viewed in a {@link cs.ycp.edu.cs481.ratemydrink.fragements.DrinkDetailFragment}.
+ * currently being viewed in a {@link BeerDetailFragment}.
  * <p/>
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
 public class DrinkListFragment extends ListFragment {
+
+    public static int DRINK_TYPE_ID;
 
     Drink[] drinkArr = null;
 
@@ -76,10 +80,7 @@ public class DrinkListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         GetDrinkListAsync getDrinkList = new GetDrinkListAsync();
-        getDrinkList.execute();
-
-        //ArrayList<Drink> drinkArr = null;
-
+        getDrinkList.execute(DRINK_TYPE_ID);
 
         try {
             drinkArr = getDrinkList.get();
@@ -94,14 +95,6 @@ public class DrinkListFragment extends ListFragment {
                 drinkArr);
 
         setListAdapter(adapter2);
-
-        /*
-        DrinkListArrayAdapter<String> adapter2 = new DrinkListArrayAdapter<String>(
-                getActivity().getBaseContext(), R.layout.list_item_layout, R.layout.list_item_layout,
-                drinkNames);
-
-        setListAdapter(adapter2);
-        */
 
     }
 

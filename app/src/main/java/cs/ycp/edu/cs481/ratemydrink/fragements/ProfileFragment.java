@@ -2,19 +2,18 @@ package cs.ycp.edu.cs481.ratemydrink.fragements;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.concurrent.ExecutionException;
 
 import cs.ycp.edu.cs481.ratemydrink.R;
-import cs.ycp.edu.cs481.ratemydrink.activities.RegisterActivity;
+import cs.ycp.edu.cs481.ratemydrink.UserInfo;
+import cs.ycp.edu.cs481.ratemydrink.controllers.web_controllers.GetFavoritesListAsync;
 
 /**
  * Created by Aaron on 4/16/2015.
@@ -30,6 +29,19 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GetFavoritesListAsync favoritesListAsync = new GetFavoritesListAsync();
+        favoritesListAsync.execute(UserInfo.user.getId());
+
+        UserInfo.favorites = null;
+
+        try {
+            UserInfo.favorites = favoritesListAsync.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -38,18 +50,15 @@ public class ProfileFragment extends Fragment {
 
         //Init field IDs
         username = (TextView) rootView.findViewById(R.id.usernameField);
-        drinks = (TextView) rootView.findViewById(R.id.totalDrinksField);
         favorites = (TextView) rootView.findViewById(R.id.totalFavoritesField);
-        comments = (TextView) rootView.findViewById(R.id.totalCommentsField);
 
         //Set field IDs to their respective database values
         //TEMP: Using pre-set values
 
-        username.setText("Leeroy Jenkins");
+        username.setText(UserInfo.user.getUserName());
         //When pulling number from the database, toString will be needed for following
-        drinks.setText("23");
-        favorites.setText("10");
-        comments.setText("14");
+
+        favorites.setText(String.valueOf(UserInfo.favorites.length));
 
         return rootView;
     }

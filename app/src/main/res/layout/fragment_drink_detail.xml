@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context="cs.ycp.edu.cs481.ratemydrink.fragements.DrinkDetailFragment"
+    tools:context="cs.ycp.edu.cs481.ratemydrink.fragements.BeerDetailFragment"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">

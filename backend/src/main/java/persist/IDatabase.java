@@ -61,6 +61,8 @@ public interface IDatabase {
 
     List<User> getUserList() throws SQLException;
 
+    Drink getDrink(int id) throws SQLException;
+
     boolean updateRating(Drink drink, float rating) throws SQLException;
 
     void replaceUserList(List<User> newUserList);
